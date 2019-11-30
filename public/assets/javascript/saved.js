@@ -208,12 +208,5 @@ $(document).ready(function() {
         bootbox.hideAll();
       });
     }
-    // // clear articles from view, remove from db
-    // function handleArticleClear() {
-    //   // $.get("api/clear")
-    //     // .then(function() {
-    //       articleContainer.empty();
-    //     //   initPage();
-    //     // });
-    // }
+   
   });

@@ -91,27 +91,4 @@ module.exports = function(router) {
         });
     });
 
-
-    // // Route to update a specific headline 
-    // router.put("/api/headlines/:id", function(req, res) {
-    //     var query = {};
-    //     query._id = req.params.id;
-    //     headlinesController.update(req.body, function(err, data) {
-    //         res.json(data);
-    //     });
-    // });
-
-   
-
-    // // route to clear the headlines
-    // router.delete("/api/clear", function(req, res) {
-    //     var query = {};
-    //     console.log(query);
-    //     headlinesController.delete(query, function(err, data) {
-    //         if (err) {
-    //             console.log(err);
-    //         }
-    //         res.json(data);
-    //     });
-    // });
 }

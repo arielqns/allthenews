@@ -8,7 +8,7 @@ html {
     background-image: url("");
   }
   
-  .card a:not([href]):not([tabindex]).scrape-new {
+  .panel a:not([href]):not([tabindex]).scrape-new {
     color: #2196F3;
   }
   
@@ -74,39 +74,39 @@ html {
     padding-bottom: 25px;
   }
   
-  .card {
+  .panel {
     border-radius: 0;
     box-shadow: 3px 3px 20px lightslategrey;
     margin: 20px 0;
   }
   
-  .card .card-header {
+  .panel .panel-heading {
     background-color: #2196f3;
     position: relative;
     padding-top: 30px;
     padding-bottom: 30px;
   }
   
-  .card .card-header h3 {
+  .panel .panel-heading h3 {
     color: white;
   }
   
-  .card .card-header .btn {
+  .panel .panel-heading .btn {
     position: absolute;
     top: 20px;
     right: 20px;
   }
   
-  .card .card-header .btn.delete {
+  .panel .panel-heading .btn.delete {
     right: 160px;
   }
   
-  .card .card-body {
+  .panel .panel-body {
     font-size: 16px;
     font-weight: 500;
   }
   
-  .card .card-header .article-link {
+  .panel .panel-heading .article-link {
     color: white;
     display: inline-block;
     width: 80%;

@@ -126,11 +126,4 @@ $(document).ready(function() {
         bootbox.alert("<h3 class='text-center m-top-80'>" + data.message + "<h3>");
       });
     }
-    // // clear articles form view, remove from db
-    // function handleArticleClear() {
-    //   // $.get("api/clear").then(function() {
-    //     articleContainer.empty();
-    //   //   initPage();
-    //   // });
-    // }
   });
