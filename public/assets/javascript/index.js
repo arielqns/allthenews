@@ -46,32 +46,25 @@ $(document).ready(function() {
       // It constructs a jQuery element containing all of the formatted HTML for the
       // article Panel
       var panel = 
-      $(["<div class='panel panel-default'>"),
+      $(["<div class='panel panel-default'>",
       "<div class='panel-heading'>",
       "<h3>",
       article.headline,
-      "<a class='btn btn-success save'>"
+      "<a class='btn btn-success save'>",
       "Save Article",
       "</a>",
       "</h3>",
       "</div>",
-      var panelHeader = $("<div class='panel-header'>").append(
-        $("<h3>").append(
-          $("<a class='article-link' target='_blank' rel='noopener noreferrer'>")
-            .attr("href", article.link)
-            .text(article.headline),
-          $()
-        )
-      );
-
-      var cardBody = $("<div class='card-body'>").text(article.reporterDate);
-
-      card.append(cardHeader, cardBody);
+      "<div class='panel-boddy'>",
+      article.summary,
+      "</div>",
+      "</div>"
+    ].join(""));
       // We attach the article's id to the jQuery element
       // We will use this when trying to figure out which article the user wants to save
-      card.data("_id", article._id);
+      panel.data("_id", article._id);
       // We return the constructed card jQuery element
-      return card;
+      return panel;
     }
   
     function renderEmpty() {
@@ -101,27 +94,21 @@ $(document).ready(function() {
       // This function is triggered when the user wants to save an article
       // When we rendered the article initially, we attached a javascript object containing the headline id
       // to the element using the .data method. Here we retrieve that.
-      var articleToSave = $(this)
-        .parents(".card")
-        .data();
+      var articleToSave = $(this).parents(".panel").data();
   
       // Remove card from page
-      $(this)
-        .parents(".card")
-        .remove();
-  
-      // console.log("INDEX.JS: ARTICLE TO SAVE =====")
-      console.log(articleToSave);
+    //   $(this).parents(".panel").remove();
 
       articleToSave.saved = true;
       // Using a patch method to be semantic since this is an update to an existing record in our collection
       $.ajax({
-        method: "PUT",
-        url: "/api/headlines/" + articleToSave._id,
+        method: "PATCH",
+        url: "/api/headlines/",
         data: articleToSave
-      }).then(function(data) {
-        // If the data was saved successfully
-        if (data.saved) {
+      })
+      .then(function(data) {
+        // If successful, mongoose will send back an object containing a key of "ok" with the value of 1
+        if (data.ok) {
           // Run the initPage function again. This will reload the entire list of articles
           initPage();
         }
@@ -130,19 +117,20 @@ $(document).ready(function() {
   
     function handleArticleScrape() {
       // This function handles the user clicking any "scrape new article" buttons
-      $.get("/api/fetch").then(function(data) {
-        // If we are able to successfully scrape the CNN.COM/World website and compare the articles to those already in our collection, 
+      $.get("/api/fetch")
+      .then(function(data) {
+        // If we are able to successfully scrape the NYTImes and compare the articles to those already in our collection, 
         // re render the articles on the page
         // and let the user know how many unique articles we were able to save
         initPage();
-        bootbox.alert($("<h3 class='text-center m-top-80'>").text(data.message));
+        bootbox.alert("<h3 class='text-center m-top-80'>" + data.message + "<h3>");
       });
     }
-    // clear articles form view, remove from db
-    function handleArticleClear() {
-      // $.get("api/clear").then(function() {
-        articleContainer.empty();
-      //   initPage();
-      // });
-    }
+    // // clear articles form view, remove from db
+    // function handleArticleClear() {
+    //   // $.get("api/clear").then(function() {
+    //     articleContainer.empty();
+    //   //   initPage();
+    //   // });
+    // }
   });
