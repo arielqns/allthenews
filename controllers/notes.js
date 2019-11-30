@@ -1,4 +1,4 @@
-// controller for notes
+// Controller for our notes
 
 var Note = require("../models/Note");
 var makeDate = require("../scripts/date");
