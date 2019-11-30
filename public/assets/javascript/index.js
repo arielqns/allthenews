@@ -31,12 +31,12 @@ $(document).ready(function() {
       // This function handles appending HTML containing our article data to the page
       // We are passed an array of JSON containing all available articles in our database
       var articlePanels = [];
-      // We pass each article JSON object to the createCard function which returns a bootstrap
+      // We pass each article JSON object to the createPanel function which returns a bootstrap
       // panel with our article data inside
       for (var i = 0; i < articles.length; i++) {
         articlePanels.push(createPanel(articles[i]));
       }
-      // Once we have all of the HTML for the articles stored in our articleCards array,
+      // Once we have all of the HTML for the articles stored in our articlePanels array,
       // append them to the articlePanels container
       articleContainer.append(articlePanels);
     }
@@ -63,7 +63,7 @@ $(document).ready(function() {
       // We attach the article's id to the jQuery element
       // We will use this when trying to figure out which article the user wants to save
       panel.data("_id", article._id);
-      // We return the constructed card jQuery element
+      // We return the constructed panel jQuery element
       return panel;
     }
   
@@ -75,11 +75,11 @@ $(document).ready(function() {
           "<div class='alert alert-warning text-center'>",
           "<h4>Uh Oh. Looks like we don't have any new articles.</h4>",
           "</div>",
-          "<div class='card'>",
-          "<div class='card-header text-center'>",
+          "<div class='panel'>",
+          "<div class='panel-header text-center'>",
           "<h3>What Would You Like To Do?</h3>",
           "</div>",
-          "<div class='card-body text-center'>",
+          "<div class='panel-body text-center'>",
           "<h4><a class='scrape-new'>Try Scraping New Articles</a></h4>",
           "<h4><a href='/saved'>Go to Saved Articles</a></h4>",
           "</div>",
@@ -96,7 +96,7 @@ $(document).ready(function() {
       // to the element using the .data method. Here we retrieve that.
       var articleToSave = $(this).parents(".panel").data();
   
-      // Remove card from page
+      // Remove panel from page
     //   $(this).parents(".panel").remove();
 
       articleToSave.saved = true;
