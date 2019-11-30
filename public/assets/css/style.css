@@ -87,7 +87,7 @@ html {
     padding-bottom: 30px;
   }
   
-  .panel .panel-heading h3 {
+  .panel .panel-heading h3 a {
     color: white;
   }
   
@@ -106,7 +106,7 @@ html {
     font-weight: 500;
   }
   
-  .panel .panel-heading .article-link {
+  .panel .panel-heading .article-link #footer {
     color: white;
     display: inline-block;
     width: 80%;
@@ -122,7 +122,7 @@ html {
     padding-left: 10px;
     margin: 0;
     font-weight: 800;
-    background: #0c7cd5;
+    background:lightslategrey;
   }
   
   .navbar-nav > li > a.scrape-new,
