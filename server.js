@@ -4,6 +4,10 @@ var mongoose = require("mongoose");
 var expressHandlebars = require("express-handlebars");
 var bodyParser = require("body-parser");
 
+var axios = require("axios");
+var cheerio = require("cheerio");
+
+
 // Set up port @ 3000
 var PORT = process.env.PORT || 3000;
 
