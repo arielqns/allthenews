@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({
 app.use(router);
 
 // if deployed, use the deployed database, Otherwise the local momgoHeadlines database
-var db = process.env.MONOGODB_URI || "mongodb://localhost/mongoHeadLines";
+var db = process.env.MONOGODB_URI || "mongodb://localhost/allthenews";
 
 // Connect to mongoose from the database
 mongoose.connect(db, function(error) {
